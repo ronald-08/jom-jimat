@@ -1,0 +1,183 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>JomJimat entry mockups</title>
+<style>:root{--foreground:#17181A;--muted:#71757C;--radius:14px;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+.wrap { width: 390px; margin: 0 auto; }
+.caption { font: 500 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--foreground); opacity: .62; padding: 0 4px 10px; }
+.phone { position: relative; width: 390px; height: 844px; border-radius: 40px; overflow: hidden;
+  background: #F6F6F4; color: #17181A; border: 1px solid #E3E3DF; display: flex; flex-direction: column; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* header */
+.hdr { display: flex; align-items: center; justify-content: space-between; padding: 18px 16px 10px; }
+.rnd { width: 38px; height: 38px; border-radius: 50%; background: #FFFFFF; border: 1px solid #E7E7E3;
+  display: grid; place-items: center; color: #17181A; font-size: 15px; }
+.seg { display: flex; background: #ECECE8; border-radius: 999px; padding: 3px; }
+.seg span { font-size: 12.5px; font-weight: 600; padding: 6px 11px; border-radius: 999px; color: #71757C; }
+.seg span.on { background: #FFFFFF; color: #17181A; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+
+/* grid */
+.gridzone { padding: 6px 16px 0; flex: 1; min-height: 0; overflow: hidden; position: relative; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.cat { position: relative; height: 74px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E9E9E5;
+  display: flex; flex-direction: column; justify-content: center; gap: 5px; padding: 0 10px; }
+.cat .ico { font-size: 19px; line-height: 1; }
+.cat .nm { font-size: 11px; font-weight: 550; letter-spacing: -.005em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 78px; }
+.cat .chev { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px;
+  border-radius: 50%; background: #F2F2EE; display: grid; place-items: center; font-size: 8px; color: #8A8E94; }
+.cat.on { background: #E4F1EB; border-color: #0E6E52; }
+.cat.on .nm { color: #0B5A43; }
+.cat.on .chev { background: #0E6E52; color: #FFFFFF; }
+.cat.sel { background: #FFFFFF; border-color: #0E6E52; }
+.cat.sel .chev { background: #0E6E52; color: #FFFFFF; }
+.cat .alloc { font-size: 10.5px; font-weight: 650; color: #0E6E52; font-variant-numeric: tabular-nums; }
+.cat.mng { background: transparent; border: 1px dashed #D3D3CD; color: #71757C; }
+.cat.mng .nm { color: #71757C; }
+.fade { position: absolute; left: 0; right: 0; bottom: 0; height: 76px;
+  background: linear-gradient(to bottom, rgba(246,246,244,0) 0%, rgba(246,246,244,.86) 42%, #F6F6F4 74%); pointer-events: none; }
+.splitcap { padding: 4px 16px 0; font-size: 11.5px; font-weight: 600; color: #0E6E52; }
+
+/* amount */
+.amtblock { margin-top: auto; padding: 10px 16px 8px; }
+.noterow { display: flex; align-items: center; gap: 10px; }
+.note { flex: 1; font-size: 13.5px; color: #71757C; }
+.note.filled { color: #17181A; }
+.cam { width: 34px; height: 34px; border-radius: 10px; background: #FFFFFF; border: 1px solid #E7E7E3; display: grid; place-items: center; font-size: 15px; }
+.amtrow { display: flex; align-items: baseline; justify-content: space-between; margin-top: 8px; gap: 10px; }
+.amtlab { font-size: 12px; font-weight: 600; color: #71757C; }
+.amt { font-size: 30px; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.amt .cur { font-size: 15px; font-weight: 650; color: #71757C; margin-right: 3px; }
+.badge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 700; letter-spacing: .04em;
+  text-transform: uppercase; color: #8A5A00; background: #FBF0D8; border-radius: 999px; padding: 3px 7px; }
+
+/* chips */
+.chips { display: flex; gap: 6px; padding: 0 16px 10px; overflow: hidden; }
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 550; color: #3A3D42;
+  background: #FFFFFF; border: 1px solid #E7E7E3; border-radius: 999px; padding: 6px 10px; white-space: nowrap; }
+.chip .up { color: #8A5A00; font-weight: 700; }
+
+/* keypad */
+.pad { padding: 0 12px 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+.key { height: 48px; border-radius: 13px; background: #FFFFFF; border: 1px solid #EDEDE9; display: grid; place-items: center;
+  font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.key.op { background: #F2F2EE; color: #4A4D52; font-size: 16px; }
+.save { grid-column: span 4; height: 50px; border-radius: 14px; background: #0E6E52; color: #FFFFFF;
+  display: grid; place-items: center; font-size: 14px; font-weight: 700; letter-spacing: .06em; }
+
+/* variant A: sheet */
+.scrim { position: absolute; inset: 0; background: rgba(23,24,26,.32); }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-radius: 22px 22px 0 0;
+  padding: 10px 0 18px; box-shadow: 0 -8px 32px rgba(0,0,0,.14); }
+.grab { width: 36px; height: 4px; border-radius: 99px; background: #D8D8D2; margin: 0 auto 10px; }
+.sheet h4 { font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #8A8E94; padding: 0 20px 8px; }
+.srow { display: flex; align-items: center; gap: 12px; padding: 11px 20px; }
+.srow .ic { width: 30px; height: 30px; border-radius: 9px; background: #F2F2EE; display: grid; place-items: center; font-size: 14px; }
+.srow .tx { flex: 1; }
+.srow .tt { font-size: 14px; font-weight: 550; }
+.srow .st { font-size: 11.5px; color: #71757C; margin-top: 2px; }
+.sw { width: 42px; height: 26px; border-radius: 99px; background: #0E6E52; position: relative; }
+.sw i { position: absolute; top: 3px; right: 3px; width: 20px; height: 20px; border-radius: 50%; background: #FFFFFF; }
+.chev2 { color: #A6AAAF; font-size: 14px; }
+.quiet { border-top: 1px solid #F0F0EC; margin-top: 6px; padding-top: 6px; }
+.quiet .tt { font-weight: 500; color: #4A4D52; }
+.quiet .del .tt { color: #B4232B; }
+
+/* variant B: inline strip */
+.strip { display: flex; gap: 8px; padding: 2px 16px 10px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600;
+  border-radius: 999px; padding: 8px 13px; border: 1px solid #E7E7E3; background: #FFFFFF; color: #3A3D42; }
+.pill.on { background: #0E6E52; border-color: #0E6E52; color: #FFFFFF; }
+.ell.on { background: #0E6E52; border-color: #0E6E52; color: #FFFFFF; }
+
+.stage { display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 4px 0 8px; }
+.unit { display: flex; align-items: flex-start; gap: 18px; width: 590px; max-width: 100%; }
+.plate { width: 270px; padding-top: 4px; }
+@media (max-width: 600px) { .unit { flex-direction: column; } .plate { width: 281px; padding-top: 0; } }
+.cap { font: 650 13px/1.35 var(--font-sans); color: inherit; padding: 0 2px 6px; letter-spacing: .01em; }
+.trade { font: 500 12px/1.55 var(--font-sans); color: color-mix(in srgb, currentColor 70%, transparent); padding: 0 2px 10px; max-width: 281px; }
+.trade b { font-weight: 650; }
+.head { width: 590px; max-width: 100%; margin: 0 auto 20px; }
+.head h1 { font: 700 18px/1.25 var(--font-sans); letter-spacing: -.015em; color: inherit; }
+.head p { font: 500 12px/1.5 var(--font-sans); color: color-mix(in srgb, currentColor 70%, transparent); margin-top: 6px; }
+.scale { width: 281px; height: 610px; position: relative; }
+.scale .phone { position: absolute; top: 0; left: 0; transform: scale(.72); transform-origin: top left; }
+</style></head><body><div class="stage">
+<div class="head"><h1>Where do Pending and Split live?</h1>
+<p>Structure only — the surface look here is a placeholder, not a direction. Three phones, same screen, three placements. Ignore colour and icon style.</p></div>
+<div class="unit"><div class="plate"><div class="cap">A · “⋯” opens a sheet over the screen</div>
+<div class="trade">Closest to what you described. <b>Cost:</b> the sheet hides the amount and Save while it is open.</div></div><div class="scale"><div class="phone">
+  <div class="hdr">
+    <div class="rnd">‹</div>
+    <div class="seg"><span class="on">Expense</span><span>Income</span><span>Transfer</span></div>
+    <div class="rnd ell on">⋯</div>
+  </div>
+  <div class="gridzone"><div class="grid"><div class="cat on"><div class="ico">🧺</div><div class="nm">Groceries</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🍜</div><div class="nm">Dining out</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🚇</div><div class="nm">Transport</div><div class="chev">▾</div></div><div class="cat "><div class="ico">⛽</div><div class="nm">Petrol</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🧾</div><div class="nm">Bills</div><div class="chev">▾</div></div><div class="cat "><div class="ico">📱</div><div class="nm">Mobile plan</div><div class="chev">▾</div></div><div class="cat "><div class="ico">💊</div><div class="nm">Health</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🧴</div><div class="nm">Household</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🛍️</div><div class="nm">Shopping</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🧸</div><div class="nm">Kids</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🎁</div><div class="nm">Gifts</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🏦</div><div class="nm">Fees</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🌱</div><div class="nm">Savings</div><div class="chev">▾</div></div><div class="cat "><div class="ico">•</div><div class="nm">Other</div><div class="chev">▾</div></div><div class="cat mng"><div class="ico">⚙︎</div><div class="nm">Manage</div></div></div><div class="fade"></div></div>
+  <div class="amtblock"><div class="noterow"><div class="note filled">Lunch with Aisyah</div><div class="cam">📷</div></div>
+  <div class="amtrow">
+    <div class="amtlab"></div>
+    <div style="display:flex;align-items:center;gap:8px"><div class="amt"><span class="cur">RM</span>32.40</div></div>
+  </div></div>
+  <div class="chips"><div class="chip">🗓 Today, 5 Nov</div><div class="chip">🏦 Maybank</div></div>
+  <div class="pad">
+    <div class="key">1</div><div class="key">2</div><div class="key">3</div><div class="key op">⌫</div>
+    <div class="key">4</div><div class="key">5</div><div class="key">6</div><div class="key op">+</div>
+    <div class="key">7</div><div class="key">8</div><div class="key">9</div><div class="key op">−</div>
+    <div class="key">.</div><div class="key">0</div><div class="key op">×</div><div class="key op">÷</div>
+    <div class="save">SAVE</div>
+  </div>
+  <div class="scrim"></div>
+  <div class="sheet">
+    <div class="grab"></div>
+    <h4>More options</h4>
+    <div class="srow"><div class="ic">🕐</div><div class="tx"><div class="tt">Pending transaction</div><div class="st">Future date allowed</div></div><div class="sw"><i></i></div></div>
+    <div class="srow"><div class="ic">⑃</div><div class="tx"><div class="tt">Split across categories</div><div class="st">Allocate this amount to more than one</div></div><div class="chev2">›</div></div>
+    <div class="quiet">
+      <div class="srow"><div class="ic">↻</div><div class="tx"><div class="tt">Save as recurring</div><div class="st">Edit mode swaps this for Duplicate / Delete</div></div></div>
+    </div>
+  </div></div></div></div>
+<div class="unit"><div class="plate"><div class="cap">B · “⋯” unfolds an inline strip; nothing is covered</div>
+<div class="trade">Both states stay visible as facts, not a remembered setting. <b>Cost:</b> it eats 40px of the grid.</div></div><div class="scale"><div class="phone">
+  <div class="hdr">
+    <div class="rnd">‹</div>
+    <div class="seg"><span class="on">Expense</span><span>Income</span><span>Transfer</span></div>
+    <div class="rnd ell on">⋯</div>
+  </div>
+  <div class="gridzone"><div class="grid"><div class="cat on"><div class="ico">🧺</div><div class="nm">Groceries</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🍜</div><div class="nm">Dining out</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🚇</div><div class="nm">Transport</div><div class="chev">▾</div></div><div class="cat "><div class="ico">⛽</div><div class="nm">Petrol</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🧾</div><div class="nm">Bills</div><div class="chev">▾</div></div><div class="cat "><div class="ico">📱</div><div class="nm">Mobile plan</div><div class="chev">▾</div></div><div class="cat "><div class="ico">💊</div><div class="nm">Health</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🧴</div><div class="nm">Household</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🛍️</div><div class="nm">Shopping</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🧸</div><div class="nm">Kids</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🎁</div><div class="nm">Gifts</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🏦</div><div class="nm">Fees</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🌱</div><div class="nm">Savings</div><div class="chev">▾</div></div><div class="cat "><div class="ico">•</div><div class="nm">Other</div><div class="chev">▾</div></div><div class="cat mng"><div class="ico">⚙︎</div><div class="nm">Manage</div></div></div><div class="fade"></div></div>
+  <div class="amtblock"><div class="noterow"><div class="note filled">Lunch with Aisyah</div><div class="cam">📷</div></div>
+  <div class="amtrow">
+    <div class="amtlab"></div>
+    <div style="display:flex;align-items:center;gap:8px"><span class="badge">Pending</span><div class="amt"><span class="cur">RM</span>32.40</div></div>
+  </div></div>
+  <div class="strip"><div class="pill on">🕐 Pending</div><div class="pill">⑃ Split</div></div>
+  <div class="chips"><div class="chip">🗓 Sat, 8 Nov <span class="up">· upcoming</span></div><div class="chip">🏦 Maybank</div></div>
+  <div class="pad">
+    <div class="key">1</div><div class="key">2</div><div class="key">3</div><div class="key op">⌫</div>
+    <div class="key">4</div><div class="key">5</div><div class="key">6</div><div class="key op">+</div>
+    <div class="key">7</div><div class="key">8</div><div class="key">9</div><div class="key op">−</div>
+    <div class="key">.</div><div class="key">0</div><div class="key op">×</div><div class="key op">÷</div>
+    <div class="save">SAVE</div>
+  </div></div></div></div>
+<div class="unit"><div class="plate"><div class="cap">C · Split turns the grid into allocation</div>
+<div class="trade">The same grid, second job: each card carries its amount; the total row becomes <b>Unallocated</b>.</div></div><div class="scale"><div class="phone">
+  <div class="hdr">
+    <div class="rnd">‹</div>
+    <div class="seg"><span class="on">Expense</span><span>Income</span><span>Transfer</span></div>
+    <div class="rnd ell on">⋯</div>
+  </div>
+  <div class="splitcap">Splitting RM 32.40</div>
+  <div class="gridzone"><div class="grid"><div class="cat sel"><div class="ico">🧺</div><div class="nm">Groceries</div><div class="alloc">RM 18.00</div><div class="chev">▾</div></div><div class="cat sel"><div class="ico">🍜</div><div class="nm">Dining out</div><div class="alloc">RM 5.00</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🚇</div><div class="nm">Transport</div><div class="chev">▾</div></div><div class="cat "><div class="ico">⛽</div><div class="nm">Petrol</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🧾</div><div class="nm">Bills</div><div class="chev">▾</div></div><div class="cat "><div class="ico">📱</div><div class="nm">Mobile plan</div><div class="chev">▾</div></div><div class="cat "><div class="ico">💊</div><div class="nm">Health</div><div class="chev">▾</div></div><div class="cat sel"><div class="ico">🧴</div><div class="nm">Household</div><div class="alloc">RM 9.40</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🛍️</div><div class="nm">Shopping</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🧸</div><div class="nm">Kids</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🎁</div><div class="nm">Gifts</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🏦</div><div class="nm">Fees</div><div class="chev">▾</div></div><div class="cat "><div class="ico">🌱</div><div class="nm">Savings</div><div class="chev">▾</div></div><div class="cat "><div class="ico">•</div><div class="nm">Other</div><div class="chev">▾</div></div><div class="cat mng"><div class="ico">⚙︎</div><div class="nm">Manage</div></div></div><div class="fade"></div></div>
+  <div class="amtblock"><div class="noterow"><div class="note filled">Lunch with Aisyah</div><div class="cam">📷</div></div>
+  <div class="amtrow">
+    <div class="amtlab">Unallocated</div>
+    <div style="display:flex;align-items:center;gap:8px"><div class="amt"><span class="cur">RM</span>0.00</div></div>
+  </div></div>
+  <div class="chips"><div class="chip">🗳 3 categories</div><div class="chip">🗓 Today, 5 Nov</div><div class="chip">🏦 Maybank</div></div>
+  <div class="pad">
+    <div class="key">1</div><div class="key">2</div><div class="key">3</div><div class="key op">⌫</div>
+    <div class="key">4</div><div class="key">5</div><div class="key">6</div><div class="key op">+</div>
+    <div class="key">7</div><div class="key">8</div><div class="key">9</div><div class="key op">−</div>
+    <div class="key">.</div><div class="key">0</div><div class="key op">×</div><div class="key op">÷</div>
+    <div class="save">DONE</div>
+  </div></div></div></div>
+</div></body></html>

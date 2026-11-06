@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Papan Harga</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 390px; height: 844px; overflow: hidden; }
+  body { background: #123B2E; color: #F3EBD8; font-family: "Arial Narrow", Arial, sans-serif;
+    display: flex; flex-direction: column; }
+  .num, .amount, .k { font-variant-numeric: tabular-nums; }
+
+  .top { height: 58px; padding: 14px 16px 0; display: flex; align-items: center; justify-content: space-between; }
+  .back, .gear { width: 28px; height: 28px; display: grid; place-items: center; font-size: 13px;
+    border: 1px solid rgba(243,235,216,.28); }
+  .seg { display: flex; gap: 14px; }
+  .seg b { font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700;
+    color: rgba(243,235,216,.5); padding-bottom: 3px; border-bottom: 2px solid transparent; }
+  .seg b.on { color: #F3EBD8; border-bottom-color: #C8452D; }
+
+  .grid { flex: 1; padding: 14px 16px 0; display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 4px; align-content: start; }
+  .cat { height: 42px; border: 1px solid rgba(243,235,216,.22); display: flex; flex-direction: column;
+    justify-content: center; padding: 0 7px; }
+  .cat span { font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; font-weight: 700;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cat em { font-style: normal; font-size: 8px; letter-spacing: .1em; color: rgba(243,235,216,.45); }
+  .cat.on { background: #C8452D; border-color: #C8452D; }
+  .cat.on em { color: rgba(255,255,255,.7); }
+
+  .foot { padding: 0 16px 12px; }
+  .labels { height: 16px; display: flex; justify-content: flex-end; gap: 10px;
+    font-size: 8px; letter-spacing: .18em; text-transform: uppercase; color: rgba(243,235,216,.55); }
+  .labels b { color: #E8A25A; font-weight: 700; }
+  .amount { text-align: right; font-size: 42px; font-weight: 700; letter-spacing: -.01em; line-height: 1.05; }
+  .amount em { font-style: normal; font-size: 13px; letter-spacing: .18em; color: rgba(243,235,216,.6); margin-right: 6px; }
+  .rules { margin-top: 6px; border-top: 2px solid rgba(243,235,216,.75); border-bottom: 1px solid rgba(243,235,216,.28); height: 4px; }
+  .remark { text-align: right; font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    color: rgba(243,235,216,.6); padding-top: 5px; }
+
+  .keys { margin-top: 8px; display: grid; grid-template-columns: repeat(3, 1fr) 38px 84px; gap: 4px; }
+  .k { height: 52px; display: grid; place-items: center; font-size: 22px; font-weight: 700; }
+  .k.o { font-size: 17px; color: #C8452D; font-weight: 700; }
+  .k.b { font-size: 13px; color: rgba(243,235,216,.6); }
+  .go { width: 38px; height: 38px; margin: auto; display: grid; place-items: center; font-size: 14px;
+    background: #F3EBD8; color: #123B2E; font-weight: 700; }
+  .go2 { width: 30px; height: 30px; margin: auto; display: grid; place-items: center; font-size: 11px;
+    border: 1px solid rgba(243,235,216,.35); color: rgba(243,235,216,.75); }
+  .chip { height: 27px; margin: auto 0; border: 1px solid rgba(243,235,216,.3); display: flex;
+    align-items: center; padding: 0 7px; font-size: 9px; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; white-space: nowrap; overflow: hidden; }
+</style></head>
+<body>
+  <div class="top">
+    <div class="back">‹</div>
+    <div class="seg"><b class="on">Expense</b><b>Income</b><b>Transfer</b></div>
+    <div class="gear">⚙</div>
+  </div>
+
+  <div class="grid">
+    <div class="cat on"><em>01</em><span>Groceries</span></div>
+    <div class="cat"><em>02</em><span>Dining out</span></div>
+    <div class="cat"><em>03</em><span>Transport</span></div>
+    <div class="cat"><em>04</em><span>Petrol</span></div>
+    <div class="cat"><em>05</em><span>Bills</span></div>
+    <div class="cat"><em>06</em><span>Mobile plan</span></div>
+    <div class="cat"><em>07</em><span>Health</span></div>
+    <div class="cat"><em>08</em><span>Household</span></div>
+    <div class="cat"><em>09</em><span>Shopping</span></div>
+    <div class="cat"><em>10</em><span>Kids</span></div>
+    <div class="cat"><em>11</em><span>Gifts</span></div>
+    <div class="cat"><em>12</em><span>Fees</span></div>
+    <div class="cat"><em>13</em><span>Savings</span></div>
+    <div class="cat"><em>14</em><span>Insurance</span></div>
+    <div class="cat"><em>15</em><span>Other</span></div>
+  </div>
+
+  <div class="foot">
+    <div class="labels"><b>Pending</b><span>Receipt</span></div>
+    <div class="amount"><em>RM</em>32.40</div>
+    <div class="rules"></div>
+    <div class="remark">Lunch with Aisyah</div>
+
+    <div class="keys">
+      <div class="k">1</div><div class="k">2</div><div class="k">3</div><div class="k o">+</div>
+      <div class="chip">Today</div>
+      <div class="k">4</div><div class="k">5</div><div class="k">6</div><div class="k o">−</div>
+      <div class="chip">Personal</div>
+      <div class="k">7</div><div class="k">8</div><div class="k">9</div><div class="k b">⌫</div>
+      <div class="chip">Maybank</div>
+      <div class="k">0</div><div class="k">.</div><div class="go2">⧉</div><div class="go">✓</div>
+      <div class="chip" style="justify-content:center;font-size:14px">⋯</div>
+    </div>
+  </div>
+</body></html>

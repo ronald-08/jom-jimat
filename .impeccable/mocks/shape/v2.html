@@ -1,0 +1,203 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>JomJimat entry v2</title>
+<style>
+:root { --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+
+.phone { position: relative; width: 390px; height: 844px; border-radius: 34px; overflow: hidden;
+  background: #F6F6F4; color: #17181A; border: 1px solid #E3E3DF;
+  display: flex; flex-direction: column; }
+
+/* top */
+.top { display: flex; align-items: center; justify-content: space-between; padding: 16px 16px 0; height: 60px; }
+.circ { width: 30px; height: 30px; border-radius: 50%; background: #FFFFFF; border: 1px solid #E7E7E3;
+  display: grid; place-items: center; font-size: 13px; color: #17181A; }
+.seg { display: flex; background: #ECECE8; border-radius: 999px; padding: 3px; }
+.seg span { font-size: 11.5px; font-weight: 600; padding: 5px 9px; border-radius: 999px; color: #71757C; }
+.seg span.on { background: #FFFFFF; color: #17181A; box-shadow: 0 1px 2px rgba(0,0,0,.07); }
+
+/* category grid */
+.gridzone { flex: 1; min-height: 0; overflow: hidden; padding: 12px 16px 0; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.cat { height: 42px; border-radius: 11px; background: #FFFFFF; border: 1px solid #E9E9E5;
+  display: flex; align-items: center; gap: 6px; padding: 0 8px; min-width: 0; }
+.ico { width: 20px; height: 20px; border-radius: 6px; background: #F1F1EC; flex: none;
+  display: grid; place-items: center; font-size: 11px; }
+.nm { font-size: 10.5px; font-weight: 600; letter-spacing: -.005em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tx { min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 1px; }
+.chev { margin-left: auto; flex: none; font-size: 8px; color: #A0A4AA; }
+.share { font-size: 9px; font-weight: 700; color: #0E6E52; font-variant-numeric: tabular-nums; line-height: 1; }
+.cat.on { background: #E4F1EB; border-color: #0E6E52; }
+.cat.on .nm { color: #0B5A43; }
+.cat.sel { border-color: #0E6E52; }
+
+/* bottom block */
+.bottom { padding: 0 16px 16px; }
+.opts { display: flex; align-items: center; justify-content: flex-end; gap: 7px; height: 16px; }
+.opt { font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #8A8E94; }
+.opt.warn { color: #96680A; }
+.sep { color: #C9C9C4; font-size: 9px; }
+.amt { text-align: right; font-size: 33px; font-weight: 700; letter-spacing: -.025em; line-height: 1.15;
+  font-variant-numeric: tabular-nums; margin-top: 1px; }
+.amt .cur { font-size: 15px; font-weight: 650; color: #71757C; margin-right: 4px; }
+.remark { text-align: right; font-size: 11px; color: #8A8E94; height: 16px; margin-top: 2px; }
+
+/* keypad + right rail */
+.keys { margin-top: 8px; display: grid; grid-template-columns: repeat(3, 1fr) 40px 84px; gap: 5px; }
+.key { height: 52px; display: grid; place-items: center; border-radius: 10px;
+  font-size: 21px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.key.op { font-size: 17px; font-weight: 500; color: #6E7278; }
+.key.bs { font-size: 14px; color: #71757C; }
+.key.tog { font-size: 12px; color: #B0B4B9; }
+.go { width: 40px; height: 40px; border-radius: 12px; background: #0E6E52; color: #FFFFFF;
+  display: grid; place-items: center; font-size: 15px; align-self: center; justify-self: center; }
+.go.off { background: #FFFFFF; border: 1px solid #DCDCD6; color: #B9BDB8; }
+.rail { height: 52px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E7E7E3;
+  display: flex; align-items: center; gap: 6px; padding: 0 8px; min-width: 0;
+  font-size: 10px; font-weight: 600; color: #3A3D42; }
+.rail .ri { font-size: 11px; flex: none; }
+.rail .rt { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rail.more { justify-content: center; font-size: 14px; font-weight: 700; color: #71757C; letter-spacing: .05em; }
+
+/* board */
+.stage { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 4px 0 8px; }
+.head { width: 590px; max-width: 100%; margin: 0 auto 18px; }
+.head h1 { font: 700 18px/1.25 var(--font-sans); letter-spacing: -.015em; color: inherit; }
+.head p { font: 500 12px/1.5 var(--font-sans); color: color-mix(in srgb, currentColor 70%, transparent); margin-top: 6px; }
+.unit { display: flex; align-items: flex-start; gap: 18px; width: 590px; max-width: 100%; }
+.plate { width: 270px; padding-top: 4px; }
+.cap { font: 650 13px/1.35 var(--font-sans); color: inherit; padding: 0 2px 6px; letter-spacing: .01em; }
+.trade { font: 500 12px/1.55 var(--font-sans); color: color-mix(in srgb, currentColor 70%, transparent); }
+.trade b { font-weight: 650; }
+.scale { width: 281px; height: 610px; position: relative; flex: none; }
+.scale .phone { position: absolute; top: 0; left: 0; transform: scale(.72); transform-origin: top left; }
+@media (max-width: 600px) { .unit { flex-direction: column; } .plate { width: 281px; padding-top: 0; } }
+</style></head><body><div class="stage">
+
+<div class="head"><h1>Entry, compacted</h1>
+<p>Structure only; the look is still a placeholder. Same screen at rest, with pending set, and in split.</p></div>
+
+<div class="unit"><div class="plate">
+<div class="cap">Resting</div>
+<div class="trade">Category becomes a 42pt row: icon, name, chevron only where a subcategory exists. Manage leaves the grid for the gear. Keypad is flat — no per-key cards — with date, ledger, account and <b>⋯</b> in the rail beside it.</div>
+</div><div class="scale"><div class="phone">
+  <div class="top"><div class="circ">‹</div>
+    <div class="seg"><span class="on">Expense</span><span>Income</span><span>Transfer</span></div>
+    <div class="circ">⚙</div></div>
+  <div class="gridzone"><div class="grid">
+    <div class="cat on"><div class="ico">🧺</div><div class="nm">Groceries</div><div class="chev">▾</div></div>
+    <div class="cat"><div class="ico">🍜</div><div class="nm">Dining out</div></div>
+    <div class="cat"><div class="ico">🚇</div><div class="nm">Transport</div></div>
+    <div class="cat"><div class="ico">⛽</div><div class="nm">Petrol</div></div>
+    <div class="cat"><div class="ico">🧾</div><div class="nm">Bills</div></div>
+    <div class="cat"><div class="ico">📱</div><div class="nm">Mobile plan</div></div>
+    <div class="cat"><div class="ico">💊</div><div class="nm">Health</div></div>
+    <div class="cat"><div class="ico">🧴</div><div class="nm">Household</div></div>
+    <div class="cat"><div class="ico">🛍️</div><div class="nm">Shopping</div><div class="chev">▾</div></div>
+    <div class="cat"><div class="ico">🧸</div><div class="nm">Kids</div></div>
+    <div class="cat"><div class="ico">🎁</div><div class="nm">Gifts</div></div>
+    <div class="cat"><div class="ico">🏦</div><div class="nm">Fees</div></div>
+    <div class="cat"><div class="ico">🌱</div><div class="nm">Savings</div></div>
+    <div class="cat"><div class="ico">🛡️</div><div class="nm">Insurance</div></div>
+    <div class="cat"><div class="ico">•</div><div class="nm">Other</div></div>
+  </div></div>
+  <div class="bottom">
+    <div class="opts"></div>
+    <div class="amt"><span class="cur">RM</span>32.40</div>
+    <div class="remark">Lunch with Aisyah</div>
+    <div class="keys">
+      <div class="key">1</div><div class="key">2</div><div class="key">3</div><div class="key op">+</div>
+      <div class="rail"><span class="ri">🗓</span><span class="rt">Today</span></div>
+      <div class="key">4</div><div class="key">5</div><div class="key">6</div><div class="key op">−</div>
+      <div class="rail"><span class="ri">📒</span><span class="rt">Personal</span></div>
+      <div class="key">7</div><div class="key">8</div><div class="key">9</div><div class="key bs">⌫</div>
+      <div class="rail"><span class="ri">🏦</span><span class="rt">Maybank</span></div>
+      <div class="key">0</div><div class="key">.</div><div class="key tog">⇕</div><div class="go">✓</div>
+      <div class="rail more">⋯</div>
+    </div>
+  </div>
+</div></div></div>
+
+<div class="unit"><div class="plate">
+<div class="cap">Pending set</div>
+<div class="trade">Nothing new appears on the screen except <b>PENDING · RECEIPT</b> in the 9pt label row above the amount — the states you turned on, not a menu you opened. The date chip carries the future date.</div>
+</div><div class="scale"><div class="phone">
+  <div class="top"><div class="circ">‹</div>
+    <div class="seg"><span class="on">Expense</span><span>Income</span><span>Transfer</span></div>
+    <div class="circ">⚙</div></div>
+  <div class="gridzone"><div class="grid">
+    <div class="cat on"><div class="ico">🧺</div><div class="nm">Groceries</div><div class="chev">▾</div></div>
+    <div class="cat"><div class="ico">🍜</div><div class="nm">Dining out</div></div>
+    <div class="cat"><div class="ico">🚇</div><div class="nm">Transport</div></div>
+    <div class="cat"><div class="ico">⛽</div><div class="nm">Petrol</div></div>
+    <div class="cat"><div class="ico">🧾</div><div class="nm">Bills</div></div>
+    <div class="cat"><div class="ico">📱</div><div class="nm">Mobile plan</div></div>
+    <div class="cat"><div class="ico">💊</div><div class="nm">Health</div></div>
+    <div class="cat"><div class="ico">🧴</div><div class="nm">Household</div></div>
+    <div class="cat"><div class="ico">🛍️</div><div class="nm">Shopping</div><div class="chev">▾</div></div>
+    <div class="cat"><div class="ico">🧸</div><div class="nm">Kids</div></div>
+    <div class="cat"><div class="ico">🎁</div><div class="nm">Gifts</div></div>
+    <div class="cat"><div class="ico">🏦</div><div class="nm">Fees</div></div>
+    <div class="cat"><div class="ico">🌱</div><div class="nm">Savings</div></div>
+    <div class="cat"><div class="ico">🛡️</div><div class="nm">Insurance</div></div>
+    <div class="cat"><div class="ico">•</div><div class="nm">Other</div></div>
+  </div></div>
+  <div class="bottom">
+    <div class="opts"><span class="opt warn">Pending</span><span class="sep">·</span><span class="opt">Receipt</span></div>
+    <div class="amt"><span class="cur">RM</span>32.40</div>
+    <div class="remark">Lunch with Aisyah</div>
+    <div class="keys">
+      <div class="key">1</div><div class="key">2</div><div class="key">3</div><div class="key op">+</div>
+      <div class="rail"><span class="ri">🗓</span><span class="rt">8 Nov</span></div>
+      <div class="key">4</div><div class="key">5</div><div class="key">6</div><div class="key op">−</div>
+      <div class="rail"><span class="ri">📒</span><span class="rt">Personal</span></div>
+      <div class="key">7</div><div class="key">8</div><div class="key">9</div><div class="key bs">⌫</div>
+      <div class="rail"><span class="ri">🏦</span><span class="rt">Maybank</span></div>
+      <div class="key">0</div><div class="key">.</div><div class="key tog">⇕</div><div class="go">✓</div>
+      <div class="rail more">⋯</div>
+    </div>
+  </div>
+</div></div></div>
+
+<div class="unit"><div class="plate">
+<div class="cap">Split — the unallocated read is now the label</div>
+<div class="trade">The remaining amount sits where your eye already is, above the total, and turns amber while anything is unassigned. ▾ is replaced by that category's share, so allocation is legible without opening anything. <b>✓ stays disabled until it reads zero.</b></div>
+</div><div class="scale"><div class="phone">
+  <div class="top"><div class="circ">‹</div>
+    <div class="seg"><span class="on">Expense</span><span>Income</span><span>Transfer</span></div>
+    <div class="circ">⚙</div></div>
+  <div class="gridzone"><div class="grid">
+    <div class="cat sel"><div class="ico">🧺</div><div class="tx"><div class="nm">Groceries</div><div class="share">RM 18.00</div></div></div>
+    <div class="cat sel"><div class="ico">🍜</div><div class="tx"><div class="nm">Dining out</div><div class="share">RM 5.00</div></div></div>
+    <div class="cat"><div class="ico">🚇</div><div class="nm">Transport</div></div>
+    <div class="cat"><div class="ico">⛽</div><div class="nm">Petrol</div></div>
+    <div class="cat"><div class="ico">🧾</div><div class="nm">Bills</div></div>
+    <div class="cat"><div class="ico">📱</div><div class="nm">Mobile plan</div></div>
+    <div class="cat"><div class="ico">💊</div><div class="nm">Health</div></div>
+    <div class="cat"><div class="ico">🧴</div><div class="nm">Household</div></div>
+    <div class="cat"><div class="ico">🛍️</div><div class="nm">Shopping</div><div class="chev">▾</div></div>
+    <div class="cat"><div class="ico">🧸</div><div class="nm">Kids</div></div>
+    <div class="cat"><div class="ico">🎁</div><div class="nm">Gifts</div></div>
+    <div class="cat"><div class="ico">🏦</div><div class="nm">Fees</div></div>
+    <div class="cat"><div class="ico">🌱</div><div class="nm">Savings</div></div>
+    <div class="cat"><div class="ico">🛡️</div><div class="nm">Insurance</div></div>
+    <div class="cat"><div class="ico">•</div><div class="nm">Other</div></div>
+  </div></div>
+  <div class="bottom">
+    <div class="opts"><span class="opt">Split · 2 categories</span><span class="sep">·</span><span class="opt warn">RM 9.40 left</span></div>
+    <div class="amt"><span class="cur">RM</span>32.40</div>
+    <div class="remark">Lunch with Aisyah</div>
+    <div class="keys">
+      <div class="key">1</div><div class="key">2</div><div class="key">3</div><div class="key op">+</div>
+      <div class="rail"><span class="ri">🗓</span><span class="rt">Today</span></div>
+      <div class="key">4</div><div class="key">5</div><div class="key">6</div><div class="key op">−</div>
+      <div class="rail"><span class="ri">📒</span><span class="rt">Personal</span></div>
+      <div class="key">7</div><div class="key">8</div><div class="key">9</div><div class="key bs">⌫</div>
+      <div class="rail"><span class="ri">🏦</span><span class="rt">Maybank</span></div>
+      <div class="key">0</div><div class="key">.</div><div class="key tog">⇕</div><div class="go off">✓</div>
+      <div class="rail more">⋯</div>
+    </div>
+  </div>
+</div></div></div>
+
+</div></body></html>
